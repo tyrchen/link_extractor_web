@@ -1,17 +1,22 @@
 defmodule LinkExtractorWebTest do
   use ExUnit.Case
   alias LinkExtractor.Link
+
+  setup do
+    Application.put_env :phoenix, :serve_endpoints, true
+  end
+
   @base "http://localhost:4001"
   @message """
   Augie,
 
-  Ctrl-p: https://github.com/kien/ctrlp.vim
+  Ctrl-p: http://github.com/kien/ctrlp.vim
 
   That is probably my absolute favorite vim plugin
   """
 
   @expected_link %Link{
-    url: "https://github.com/kien/ctrlp.vim",
+    url: "http://github.com/kien/ctrlp.vim",
     title: "kien/ctrlp.vim · GitHub",
   }
 

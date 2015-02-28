@@ -15,7 +15,7 @@ defmodule LinkExtractorWeb.Router do
   scope "/", LinkExtractorWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", LinkController, :index
     get "/links", LinkController, :index
     post "/messages", MessageController, :create
     
